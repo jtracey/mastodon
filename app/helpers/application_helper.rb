@@ -59,12 +59,12 @@ module ApplicationHelper
   end
 
   def favicon_path
-    env_suffix = Rails.env.production? ? '' : '-dev'
+    env_suffix = (Rails.env.production? || Rails.env.onion?) ? '' : '-dev'
     "/favicon#{env_suffix}.ico"
   end
 
   def title
-    Rails.env.production? ? site_title : "#{site_title} (Dev)"
+    (Rails.env.production? || Rails.env.onion?) ? site_title : "#{site_title} (Dev)"
   end
 
   def class_for_scope(scope)

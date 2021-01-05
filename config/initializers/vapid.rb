@@ -9,7 +9,7 @@ Rails.application.configure do
   #
   # For more information visit https://rossta.net/blog/using-the-web-push-api-with-vapid.html
 
-  if Rails.env.production?
+  if (Rails.env.production? || Rails.env.onion?)
     config.x.vapid_private_key = ENV['VAPID_PRIVATE_KEY']
     config.x.vapid_public_key = ENV['VAPID_PUBLIC_KEY']
   end
